@@ -1,0 +1,935 @@
+
+LAB2C.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000538  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000004c4  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000003  00800100  00800100  00000538  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000538  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000568  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000d8  00000000  00000000  000005a8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000d52  00000000  00000000  00000680  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000972  00000000  00000000  000013d2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000007c3  00000000  00000000  00001d44  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000170  00000000  00000000  00002508  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000004bf  00000000  00000000  00002678  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000555  00000000  00000000  00002b37  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000098  00000000  00000000  0000308c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 fa 01 	jmp	0x3f4	; 0x3f4 <__vector_14>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a3 30       	cpi	r26, 0x03	; 3
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 ac 00 	call	0x158	; 0x158 <main>
+  88:	0c 94 60 02 	jmp	0x4c0	; 0x4c0 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <ADC_init>:
+	}
+}
+
+void ADC_init(void)                  // Esta rutina deja listo el módulo ADC
+{
+	ADMUX = 0;                       // Limpia la configuración previa del multiplexor ADC
+  90:	ac e7       	ldi	r26, 0x7C	; 124
+  92:	b0 e0       	ldi	r27, 0x00	; 0
+  94:	1c 92       	st	X, r1
+	ADCSRA = 0;                      // Limpia la configuración previa del control ADC
+  96:	ea e7       	ldi	r30, 0x7A	; 122
+  98:	f0 e0       	ldi	r31, 0x00	; 0
+  9a:	10 82       	st	Z, r1
+
+	ADMUX |= (1 << REFS0);           // Selecciona AVcc como referencia del ADC
+  9c:	8c 91       	ld	r24, X
+  9e:	80 64       	ori	r24, 0x40	; 64
+  a0:	8c 93       	st	X, r24
+
+	ADCSRA |= (1 << ADEN);           // Enciende el ADC para permitir conversiones
+  a2:	80 81       	ld	r24, Z
+  a4:	80 68       	ori	r24, 0x80	; 128
+  a6:	80 83       	st	Z, r24
+	ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // Coloca prescaler 128 para un rango seguro de trabajo
+  a8:	80 81       	ld	r24, Z
+  aa:	87 60       	ori	r24, 0x07	; 7
+  ac:	80 83       	st	Z, r24
+  ae:	08 95       	ret
+
+000000b0 <ADC_read>:
+}
+
+uint16_t ADC_read(uint8_t canal)     // Esta rutina lee un canal analógico y devuelve su valor
+{
+	ADMUX &= 0xF0;                   // Limpia solo los bits del canal sin tocar la referencia
+  b0:	ec e7       	ldi	r30, 0x7C	; 124
+  b2:	f0 e0       	ldi	r31, 0x00	; 0
+  b4:	90 81       	ld	r25, Z
+  b6:	90 7f       	andi	r25, 0xF0	; 240
+  b8:	90 83       	st	Z, r25
+	ADMUX |= (canal & 0x0F);         // Coloca el canal que queremos leer
+  ba:	90 81       	ld	r25, Z
+  bc:	8f 70       	andi	r24, 0x0F	; 15
+  be:	98 2b       	or	r25, r24
+  c0:	90 83       	st	Z, r25
+
+	ADCSRA |= (1 << ADSC);           // Inicia la conversión analógica digital
+  c2:	ea e7       	ldi	r30, 0x7A	; 122
+  c4:	f0 e0       	ldi	r31, 0x00	; 0
+  c6:	80 81       	ld	r24, Z
+  c8:	80 64       	ori	r24, 0x40	; 64
+  ca:	80 83       	st	Z, r24
+
+	while (ADCSRA & (1 << ADSC));    // Espera hasta que la conversión termine
+  cc:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7f807a>
+  d0:	86 fd       	sbrc	r24, 6
+  d2:	fc cf       	rjmp	.-8      	; 0xcc <ADC_read+0x1c>
+
+	return ADC;                      // Devuelve el valor final de 10 bits
+  d4:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7f8078>
+  d8:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
+}
+  dc:	08 95       	ret
+
+000000de <ADC_read_avg>:
+
+uint16_t ADC_read_avg(uint8_t canal) // Esta rutina lee varias veces el ADC y devuelve un promedio
+{
+  de:	cf 92       	push	r12
+  e0:	df 92       	push	r13
+  e2:	ef 92       	push	r14
+  e4:	ff 92       	push	r15
+  e6:	cf 93       	push	r28
+  e8:	c8 2f       	mov	r28, r24
+	uint32_t sm = 0;                 // Aquí se acumulan las lecturas para luego promediarlas
+
+	sm += ADC_read(canal);           // Primera lectura del canal
+  ea:	0e 94 58 00 	call	0xb0	; 0xb0 <ADC_read>
+  ee:	6c 01       	movw	r12, r24
+  f0:	e1 2c       	mov	r14, r1
+  f2:	f1 2c       	mov	r15, r1
+	sm += ADC_read(canal);           // Segunda lectura del canal
+  f4:	8c 2f       	mov	r24, r28
+  f6:	0e 94 58 00 	call	0xb0	; 0xb0 <ADC_read>
+  fa:	c8 0e       	add	r12, r24
+  fc:	d9 1e       	adc	r13, r25
+  fe:	e1 1c       	adc	r14, r1
+ 100:	f1 1c       	adc	r15, r1
+	sm += ADC_read(canal);           // Tercera lectura del canal
+ 102:	8c 2f       	mov	r24, r28
+ 104:	0e 94 58 00 	call	0xb0	; 0xb0 <ADC_read>
+ 108:	c8 0e       	add	r12, r24
+ 10a:	d9 1e       	adc	r13, r25
+ 10c:	e1 1c       	adc	r14, r1
+ 10e:	f1 1c       	adc	r15, r1
+	sm += ADC_read(canal);           // Cuarta lectura del canal
+ 110:	8c 2f       	mov	r24, r28
+ 112:	0e 94 58 00 	call	0xb0	; 0xb0 <ADC_read>
+ 116:	a7 01       	movw	r20, r14
+ 118:	96 01       	movw	r18, r12
+ 11a:	28 0f       	add	r18, r24
+ 11c:	39 1f       	adc	r19, r25
+ 11e:	41 1d       	adc	r20, r1
+ 120:	51 1d       	adc	r21, r1
+ 122:	da 01       	movw	r26, r20
+ 124:	c9 01       	movw	r24, r18
+
+	return (uint16_t)(sm / 4);       // Devuelve el promedio de las 4 lecturas
+ 126:	b6 95       	lsr	r27
+ 128:	a7 95       	ror	r26
+ 12a:	97 95       	ror	r25
+ 12c:	87 95       	ror	r24
+ 12e:	b6 95       	lsr	r27
+ 130:	a7 95       	ror	r26
+ 132:	97 95       	ror	r25
+ 134:	87 95       	ror	r24
+}
+ 136:	cf 91       	pop	r28
+ 138:	ff 90       	pop	r15
+ 13a:	ef 90       	pop	r14
+ 13c:	df 90       	pop	r13
+ 13e:	cf 90       	pop	r12
+ 140:	08 95       	ret
+
+00000142 <abs_diff>:
+
+uint16_t abs_diff(uint16_t a, uint16_t b) // Esta rutina calcula la diferencia absoluta entre dos valores
+{
+	if (a > b)                       // Si el primer valor es mayor
+ 142:	68 17       	cp	r22, r24
+ 144:	79 07       	cpc	r23, r25
+ 146:	18 f4       	brcc	.+6      	; 0x14e <abs_diff+0xc>
+	{
+		return a - b;                // Devuelve la resta en ese orden
+ 148:	86 1b       	sub	r24, r22
+ 14a:	97 0b       	sbc	r25, r23
+ 14c:	08 95       	ret
+	}
+	else                             // Si el segundo valor es mayor o igual
+	{
+		return b - a;                // Devuelve la resta en el orden contrario
+ 14e:	9b 01       	movw	r18, r22
+ 150:	28 1b       	sub	r18, r24
+ 152:	39 0b       	sbc	r19, r25
+ 154:	c9 01       	movw	r24, r18
+	}
+ 156:	08 95       	ret
+
+00000158 <main>:
+	uint16_t an2 = 0;                // Guarda el valor anterior aceptado para el LED
+
+	uint16_t fl2 = 0;                // Guarda un valor suavizado extra para el LED
+	uint8_t cd2 = 0;                 // Este contador hará que el LED se actualice un poco más lento
+
+	ADC_init();                      // Primero deja configurado el ADC
+ 158:	0e 94 48 00 	call	0x90	; 0x90 <ADC_init>
+	PWM1_servo_init();               // Después deja listo el PWM1 para el servo 1
+ 15c:	0e 94 28 01 	call	0x250	; 0x250 <PWM1_servo_init>
+	PWM2_servo_init();               // Luego deja listo el PWM2 para el servo 2
+ 160:	0e 94 6e 01 	call	0x2dc	; 0x2dc <PWM2_servo_init>
+	PWM3_led_init();                 // Después deja listo el PWM manual para el LED
+ 164:	0e 94 b3 01 	call	0x366	; 0x366 <PWM3_led_init>
+
+	sei();                           // Habilita las interrupciones globales para que el Timer0 trabaje
+ 168:	78 94       	sei
+
+	an0 = ADC_read_avg(0);           // Toma una lectura inicial estable para el servo 1
+ 16a:	80 e0       	ldi	r24, 0x00	; 0
+ 16c:	0e 94 6f 00 	call	0xde	; 0xde <ADC_read_avg>
+ 170:	a8 2e       	mov	r10, r24
+ 172:	b9 2e       	mov	r11, r25
+	an1 = ADC_read_avg(1);           // Toma una lectura inicial estable para el servo 2
+ 174:	81 e0       	ldi	r24, 0x01	; 1
+ 176:	0e 94 6f 00 	call	0xde	; 0xde <ADC_read_avg>
+ 17a:	c8 2e       	mov	r12, r24
+ 17c:	d9 2e       	mov	r13, r25
+	fl2 = ADC_read_avg(2);           // Toma una lectura inicial estable para el LED
+ 17e:	82 e0       	ldi	r24, 0x02	; 2
+ 180:	0e 94 6f 00 	call	0xde	; 0xde <ADC_read_avg>
+ 184:	88 2e       	mov	r8, r24
+ 186:	99 2e       	mov	r9, r25
+	an2 = fl2;                       // Hace que el valor anterior del LED arranque desde el filtrado inicial
+
+	PWM1_servo_set_from_adc(an0);    // Coloca el servo 1 en una posición inicial estable
+ 188:	8a 2d       	mov	r24, r10
+ 18a:	9b 2d       	mov	r25, r11
+ 18c:	0e 94 5d 01 	call	0x2ba	; 0x2ba <PWM1_servo_set_from_adc>
+	PWM2_servo_set_from_adc(an1);    // Coloca el servo 2 en una posición inicial estable
+ 190:	8c 2d       	mov	r24, r12
+ 192:	9d 2d       	mov	r25, r13
+ 194:	0e 94 a2 01 	call	0x344	; 0x344 <PWM2_servo_set_from_adc>
+	PWM3_led_set_from_adc(an2);      // Coloca el LED en un brillo inicial estable
+ 198:	88 2d       	mov	r24, r8
+ 19a:	99 2d       	mov	r25, r9
+ 19c:	0e 94 e0 01 	call	0x3c0	; 0x3c0 <PWM3_led_set_from_adc>
+
+	sei();                           // Habilita las interrupciones globales para que el Timer0 trabaje
+
+	an0 = ADC_read_avg(0);           // Toma una lectura inicial estable para el servo 1
+	an1 = ADC_read_avg(1);           // Toma una lectura inicial estable para el servo 2
+	fl2 = ADC_read_avg(2);           // Toma una lectura inicial estable para el LED
+ 1a0:	08 2d       	mov	r16, r8
+ 1a2:	19 2d       	mov	r17, r9
+	uint16_t an0 = 0;                // Guarda el valor anterior aceptado para el servo 1
+	uint16_t an1 = 0;                // Guarda el valor anterior aceptado para el servo 2
+	uint16_t an2 = 0;                // Guarda el valor anterior aceptado para el LED
+
+	uint16_t fl2 = 0;                // Guarda un valor suavizado extra para el LED
+	uint8_t cd2 = 0;                 // Este contador hará que el LED se actualice un poco más lento
+ 1a4:	c0 e0       	ldi	r28, 0x00	; 0
+	PWM2_servo_set_from_adc(an1);    // Coloca el servo 2 en una posición inicial estable
+	PWM3_led_set_from_adc(an2);      // Coloca el LED en un brillo inicial estable
+
+	while (1)                        // Entra en un ciclo infinito para que el sistema nunca se detenga
+	{
+		vl0 = ADC_read_avg(0);       // Lee A0 varias veces y promedia para reducir ruido
+ 1a6:	80 e0       	ldi	r24, 0x00	; 0
+ 1a8:	0e 94 6f 00 	call	0xde	; 0xde <ADC_read_avg>
+ 1ac:	58 2e       	mov	r5, r24
+ 1ae:	69 2e       	mov	r6, r25
+		vl1 = ADC_read_avg(1);       // Lee A1 varias veces y promedia para reducir ruido
+ 1b0:	81 e0       	ldi	r24, 0x01	; 1
+ 1b2:	0e 94 6f 00 	call	0xde	; 0xde <ADC_read_avg>
+ 1b6:	78 2e       	mov	r7, r24
+ 1b8:	d9 2f       	mov	r29, r25
+		vl2 = ADC_read_avg(2);       // Lee A2 varias veces y promedia para reducir ruido
+ 1ba:	82 e0       	ldi	r24, 0x02	; 2
+ 1bc:	0e 94 6f 00 	call	0xde	; 0xde <ADC_read_avg>
+ 1c0:	7c 01       	movw	r14, r24
+
+		if (abs_diff(vl0, an0) > 10) // Solo actualiza el servo 1 si el cambio ya es suficientemente grande
+ 1c2:	6a 2d       	mov	r22, r10
+ 1c4:	7b 2d       	mov	r23, r11
+ 1c6:	85 2d       	mov	r24, r5
+ 1c8:	96 2d       	mov	r25, r6
+ 1ca:	0e 94 a1 00 	call	0x142	; 0x142 <abs_diff>
+ 1ce:	0b 97       	sbiw	r24, 0x0b	; 11
+ 1d0:	30 f0       	brcs	.+12     	; 0x1de <main+0x86>
+		{
+			an0 = vl0;               // Guarda el nuevo valor aceptado del servo 1
+			PWM1_servo_set_from_adc(an0); // Actualiza la posición del servo 1
+ 1d2:	85 2d       	mov	r24, r5
+ 1d4:	96 2d       	mov	r25, r6
+ 1d6:	0e 94 5d 01 	call	0x2ba	; 0x2ba <PWM1_servo_set_from_adc>
+		vl1 = ADC_read_avg(1);       // Lee A1 varias veces y promedia para reducir ruido
+		vl2 = ADC_read_avg(2);       // Lee A2 varias veces y promedia para reducir ruido
+
+		if (abs_diff(vl0, an0) > 10) // Solo actualiza el servo 1 si el cambio ya es suficientemente grande
+		{
+			an0 = vl0;               // Guarda el nuevo valor aceptado del servo 1
+ 1da:	a5 2c       	mov	r10, r5
+ 1dc:	b6 2c       	mov	r11, r6
+			PWM1_servo_set_from_adc(an0); // Actualiza la posición del servo 1
+		}
+
+		if (abs_diff(vl1, an1) > 10) // Solo actualiza el servo 2 si el cambio ya es suficientemente grande
+ 1de:	6c 2d       	mov	r22, r12
+ 1e0:	7d 2d       	mov	r23, r13
+ 1e2:	87 2d       	mov	r24, r7
+ 1e4:	9d 2f       	mov	r25, r29
+ 1e6:	0e 94 a1 00 	call	0x142	; 0x142 <abs_diff>
+ 1ea:	0b 97       	sbiw	r24, 0x0b	; 11
+ 1ec:	30 f0       	brcs	.+12     	; 0x1fa <main+0xa2>
+		{
+			an1 = vl1;               // Guarda el nuevo valor aceptado del servo 2
+			PWM2_servo_set_from_adc(an1); // Actualiza la posición del servo 2
+ 1ee:	87 2d       	mov	r24, r7
+ 1f0:	9d 2f       	mov	r25, r29
+ 1f2:	0e 94 a2 01 	call	0x344	; 0x344 <PWM2_servo_set_from_adc>
+			PWM1_servo_set_from_adc(an0); // Actualiza la posición del servo 1
+		}
+
+		if (abs_diff(vl1, an1) > 10) // Solo actualiza el servo 2 si el cambio ya es suficientemente grande
+		{
+			an1 = vl1;               // Guarda el nuevo valor aceptado del servo 2
+ 1f6:	c7 2c       	mov	r12, r7
+ 1f8:	dd 2e       	mov	r13, r29
+			PWM2_servo_set_from_adc(an1); // Actualiza la posición del servo 2
+		}
+
+		cd2++;                       // Aumenta el contador que controla cada cuánto se refresca el LED
+ 1fa:	cf 5f       	subi	r28, 0xFF	; 255
+
+		if (cd2 >= 4)                // Hace que el LED se actualice más seguido para responder más rápido
+ 1fc:	c4 30       	cpi	r28, 0x04	; 4
+ 1fe:	08 f1       	brcs	.+66     	; 0x242 <main+0xea>
+		{
+			cd2 = 0;                 // Reinicia el contador para comenzar otra espera
+
+			fl2 = (fl2 * 7 + vl2) / 8; // Suaviza el valor del LED, pero con menos filtro para que reaccione antes
+ 200:	c8 01       	movw	r24, r16
+ 202:	88 0f       	add	r24, r24
+ 204:	99 1f       	adc	r25, r25
+ 206:	88 0f       	add	r24, r24
+ 208:	99 1f       	adc	r25, r25
+ 20a:	88 0f       	add	r24, r24
+ 20c:	99 1f       	adc	r25, r25
+ 20e:	80 1b       	sub	r24, r16
+ 210:	91 0b       	sbc	r25, r17
+ 212:	8e 0d       	add	r24, r14
+ 214:	9f 1d       	adc	r25, r15
+ 216:	8c 01       	movw	r16, r24
+ 218:	16 95       	lsr	r17
+ 21a:	07 95       	ror	r16
+ 21c:	16 95       	lsr	r17
+ 21e:	07 95       	ror	r16
+ 220:	16 95       	lsr	r17
+ 222:	07 95       	ror	r16
+
+			if (abs_diff(fl2, an2) > 8) // Solo actualiza el LED si el cambio ya es suficientemente apreciable
+ 224:	68 2d       	mov	r22, r8
+ 226:	79 2d       	mov	r23, r9
+ 228:	c8 01       	movw	r24, r16
+ 22a:	0e 94 a1 00 	call	0x142	; 0x142 <abs_diff>
+ 22e:	09 97       	sbiw	r24, 0x09	; 9
+ 230:	38 f0       	brcs	.+14     	; 0x240 <main+0xe8>
+			{
+				an2 = fl2;           // Guarda el nuevo valor aceptado del LED
+				PWM3_led_set_from_adc(an2); // Actualiza el brillo del LED
+ 232:	c8 01       	movw	r24, r16
+ 234:	0e 94 e0 01 	call	0x3c0	; 0x3c0 <PWM3_led_set_from_adc>
+
+			fl2 = (fl2 * 7 + vl2) / 8; // Suaviza el valor del LED, pero con menos filtro para que reaccione antes
+
+			if (abs_diff(fl2, an2) > 8) // Solo actualiza el LED si el cambio ya es suficientemente apreciable
+			{
+				an2 = fl2;           // Guarda el nuevo valor aceptado del LED
+ 238:	80 2e       	mov	r8, r16
+ 23a:	91 2e       	mov	r9, r17
+
+		cd2++;                       // Aumenta el contador que controla cada cuánto se refresca el LED
+
+		if (cd2 >= 4)                // Hace que el LED se actualice más seguido para responder más rápido
+		{
+			cd2 = 0;                 // Reinicia el contador para comenzar otra espera
+ 23c:	c0 e0       	ldi	r28, 0x00	; 0
+ 23e:	01 c0       	rjmp	.+2      	; 0x242 <main+0xea>
+ 240:	c0 e0       	ldi	r28, 0x00	; 0
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 242:	8f e3       	ldi	r24, 0x3F	; 63
+ 244:	9c e9       	ldi	r25, 0x9C	; 156
+ 246:	01 97       	sbiw	r24, 0x01	; 1
+ 248:	f1 f7       	brne	.-4      	; 0x246 <main+0xee>
+ 24a:	00 c0       	rjmp	.+0      	; 0x24c <main+0xf4>
+ 24c:	00 00       	nop
+ 24e:	ab cf       	rjmp	.-170    	; 0x1a6 <main+0x4e>
+
+00000250 <PWM1_servo_init>:
+#include "pwm1_servo.h"              // Incluye el header de la librería propia del servo 1
+
+void PWM1_servo_init(void)           // Aquí configuramos el Timer1 para controlar el servo 1
+{
+	DDRB |= (1 << DDB1);             // Pone PB1 como salida, que en Arduino Nano corresponde a D9
+ 250:	84 b1       	in	r24, 0x04	; 4
+ 252:	82 60       	ori	r24, 0x02	; 2
+ 254:	84 b9       	out	0x04, r24	; 4
+
+	TCCR1A = 0;                      // Limpia la configuración previa del Timer1 parte A
+ 256:	a0 e8       	ldi	r26, 0x80	; 128
+ 258:	b0 e0       	ldi	r27, 0x00	; 0
+ 25a:	1c 92       	st	X, r1
+	TCCR1B = 0;                      // Limpia la configuración previa del Timer1 parte B
+ 25c:	e1 e8       	ldi	r30, 0x81	; 129
+ 25e:	f0 e0       	ldi	r31, 0x00	; 0
+ 260:	10 82       	st	Z, r1
+
+	TCCR1A |= (1 << COM1A1);         // Hace que OC1A trabaje en modo no invertido para sacar el PWM por D9
+ 262:	8c 91       	ld	r24, X
+ 264:	80 68       	ori	r24, 0x80	; 128
+ 266:	8c 93       	st	X, r24
+	TCCR1A |= (1 << WGM11);          // Activa parte del modo Fast PWM en Timer1
+ 268:	8c 91       	ld	r24, X
+ 26a:	82 60       	ori	r24, 0x02	; 2
+ 26c:	8c 93       	st	X, r24
+	TCCR1B |= (1 << WGM12) | (1 << WGM13); // Completa el modo Fast PWM usando ICR1 como tope
+ 26e:	80 81       	ld	r24, Z
+ 270:	88 61       	ori	r24, 0x18	; 24
+ 272:	80 83       	st	Z, r24
+
+	TCCR1B |= (1 << CS11);           // Coloca prescaler 8 para lograr un periodo útil para servo
+ 274:	80 81       	ld	r24, Z
+ 276:	82 60       	ori	r24, 0x02	; 2
+ 278:	80 83       	st	Z, r24
+
+	ICR1 = 39999;                    // Fija un periodo de 20 ms, que equivale a 50 Hz para el servo
+ 27a:	8f e3       	ldi	r24, 0x3F	; 63
+ 27c:	9c e9       	ldi	r25, 0x9C	; 156
+ 27e:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7f8087>
+ 282:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7f8086>
+	OCR1A = 3000;                    // Deja el servo 1 arrancando cerca del centro con 1500 us
+ 286:	88 eb       	ldi	r24, 0xB8	; 184
+ 288:	9b e0       	ldi	r25, 0x0B	; 11
+ 28a:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+ 28e:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+ 292:	08 95       	ret
+
+00000294 <PWM1_servo_set_pulse_us>:
+
+void PWM1_servo_set_pulse_us(uint16_t us) // Esta rutina convierte microsegundos en cuentas de Timer1
+{
+	uint16_t tk = 0;                 // Aquí guardaremos cuántos ticks necesita el pulso
+
+	if (us < 1000)                  // Si el pulso pedido es menor al mínimo seguro
+ 294:	88 3e       	cpi	r24, 0xE8	; 232
+ 296:	23 e0       	ldi	r18, 0x03	; 3
+ 298:	92 07       	cpc	r25, r18
+ 29a:	10 f4       	brcc	.+4      	; 0x2a0 <PWM1_servo_set_pulse_us+0xc>
+	{
+		us = 1000;                  // Lo limitamos al valor mínimo
+ 29c:	88 ee       	ldi	r24, 0xE8	; 232
+ 29e:	93 e0       	ldi	r25, 0x03	; 3
+	}
+
+	if (us > 2000)                  // Si el pulso pedido es mayor al máximo seguro
+ 2a0:	81 3d       	cpi	r24, 0xD1	; 209
+ 2a2:	27 e0       	ldi	r18, 0x07	; 7
+ 2a4:	92 07       	cpc	r25, r18
+ 2a6:	10 f0       	brcs	.+4      	; 0x2ac <PWM1_servo_set_pulse_us+0x18>
+	{
+		us = 2000;                  // Lo limitamos al valor máximo
+ 2a8:	80 ed       	ldi	r24, 0xD0	; 208
+ 2aa:	97 e0       	ldi	r25, 0x07	; 7
+	}
+
+	tk = us * 2;                    // Convierte microsegundos a ticks porque en Timer1 cada tick vale 0.5 us
+ 2ac:	88 0f       	add	r24, r24
+ 2ae:	99 1f       	adc	r25, r25
+	OCR1A = tk;                     // Carga ese valor al registro que controla el ancho del pulso en D9
+ 2b0:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+ 2b4:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+ 2b8:	08 95       	ret
+
+000002ba <PWM1_servo_set_from_adc>:
+
+void PWM1_servo_set_from_adc(uint16_t adc_value) // Esta rutina convierte una lectura ADC en pulso para el servo 1
+{
+	uint16_t ps = 0;                // Aquí guardaremos el pulso final en microsegundos
+
+	ps = 1000 + ((uint32_t)adc_value * 1000UL) / 1023UL; // Mapea el rango 0-1023 del ADC a 1000-2000 us
+ 2ba:	9c 01       	movw	r18, r24
+ 2bc:	a8 ee       	ldi	r26, 0xE8	; 232
+ 2be:	b3 e0       	ldi	r27, 0x03	; 3
+ 2c0:	0e 94 51 02 	call	0x4a2	; 0x4a2 <__umulhisi3>
+ 2c4:	2f ef       	ldi	r18, 0xFF	; 255
+ 2c6:	33 e0       	ldi	r19, 0x03	; 3
+ 2c8:	40 e0       	ldi	r20, 0x00	; 0
+ 2ca:	50 e0       	ldi	r21, 0x00	; 0
+ 2cc:	0e 94 2f 02 	call	0x45e	; 0x45e <__udivmodsi4>
+	PWM1_servo_set_pulse_us(ps);    // Manda ese pulso ya calculado al servo 1
+ 2d0:	c9 01       	movw	r24, r18
+ 2d2:	88 51       	subi	r24, 0x18	; 24
+ 2d4:	9c 4f       	sbci	r25, 0xFC	; 252
+ 2d6:	0e 94 4a 01 	call	0x294	; 0x294 <PWM1_servo_set_pulse_us>
+ 2da:	08 95       	ret
+
+000002dc <PWM2_servo_init>:
+#include "pwm2_servo.h"              // Incluye el header de la librería propia del servo 2
+
+void PWM2_servo_init(void)           // Aquí configuramos el Timer2 para controlar el servo 2
+{
+	DDRB |= (1 << DDB3);             // Pone PB3 como salida, que en Arduino Nano corresponde a D11
+ 2dc:	84 b1       	in	r24, 0x04	; 4
+ 2de:	88 60       	ori	r24, 0x08	; 8
+ 2e0:	84 b9       	out	0x04, r24	; 4
+
+	TCCR2A = 0;                      // Limpia la configuración previa del Timer2 parte A
+ 2e2:	e0 eb       	ldi	r30, 0xB0	; 176
+ 2e4:	f0 e0       	ldi	r31, 0x00	; 0
+ 2e6:	10 82       	st	Z, r1
+	TCCR2B = 0;                      // Limpia la configuración previa del Timer2 parte B
+ 2e8:	a1 eb       	ldi	r26, 0xB1	; 177
+ 2ea:	b0 e0       	ldi	r27, 0x00	; 0
+ 2ec:	1c 92       	st	X, r1
+
+	TCCR2A |= (1 << COM2A1);         // Hace que OC2A trabaje en modo no invertido para sacar PWM por D11
+ 2ee:	80 81       	ld	r24, Z
+ 2f0:	80 68       	ori	r24, 0x80	; 128
+ 2f2:	80 83       	st	Z, r24
+	TCCR2A |= (1 << WGM20) | (1 << WGM21); // Pone Timer2 en Fast PWM con tope fijo de 255
+ 2f4:	80 81       	ld	r24, Z
+ 2f6:	83 60       	ori	r24, 0x03	; 3
+ 2f8:	80 83       	st	Z, r24
+
+	TCCR2B |= (1 << CS22) | (1 << CS21) | (1 << CS20); // Usa prescaler 1024 para bajar la frecuencia y acercarla a la del servo
+ 2fa:	8c 91       	ld	r24, X
+ 2fc:	87 60       	ori	r24, 0x07	; 7
+ 2fe:	8c 93       	st	X, r24
+
+	OCR2A = 23;                      // Deja el servo 2 con un valor inicial aproximado al centro
+ 300:	87 e1       	ldi	r24, 0x17	; 23
+ 302:	80 93 b3 00 	sts	0x00B3, r24	; 0x8000b3 <__TEXT_REGION_LENGTH__+0x7f80b3>
+ 306:	08 95       	ret
+
+00000308 <PWM2_servo_set_pulse_us>:
+
+void PWM2_servo_set_pulse_us(uint16_t us) // Esta rutina adapta microsegundos a la escala más limitada del Timer2
+{
+	uint8_t tk = 0;                 // Aquí guardaremos el valor final que irá a OCR2A
+
+	if (us < 1000)                 // Si el pulso pedido es menor al mínimo útil
+ 308:	88 3e       	cpi	r24, 0xE8	; 232
+ 30a:	23 e0       	ldi	r18, 0x03	; 3
+ 30c:	92 07       	cpc	r25, r18
+ 30e:	10 f4       	brcc	.+4      	; 0x314 <PWM2_servo_set_pulse_us+0xc>
+	{
+		us = 1000;                 // Lo fijamos al mínimo
+ 310:	88 ee       	ldi	r24, 0xE8	; 232
+ 312:	93 e0       	ldi	r25, 0x03	; 3
+	}
+
+	if (us > 2000)                 // Si el pulso pedido es mayor al máximo útil
+ 314:	81 3d       	cpi	r24, 0xD1	; 209
+ 316:	27 e0       	ldi	r18, 0x07	; 7
+ 318:	92 07       	cpc	r25, r18
+ 31a:	10 f0       	brcs	.+4      	; 0x320 <PWM2_servo_set_pulse_us+0x18>
+	{
+		us = 2000;                 // Lo fijamos al máximo
+ 31c:	80 ed       	ldi	r24, 0xD0	; 208
+ 31e:	97 e0       	ldi	r25, 0x07	; 7
+	}
+
+	tk = (uint8_t)(us / 64);       // Convierte microsegundos a pasos de Timer2, donde cada paso vale aprox 64 us
+ 320:	00 24       	eor	r0, r0
+ 322:	88 0f       	add	r24, r24
+ 324:	99 1f       	adc	r25, r25
+ 326:	00 1c       	adc	r0, r0
+ 328:	88 0f       	add	r24, r24
+ 32a:	99 1f       	adc	r25, r25
+ 32c:	00 1c       	adc	r0, r0
+ 32e:	89 2f       	mov	r24, r25
+ 330:	90 2d       	mov	r25, r0
+
+	if (tk < 16)                   // Si quedó por debajo del rango útil
+ 332:	80 31       	cpi	r24, 0x10	; 16
+ 334:	08 f4       	brcc	.+2      	; 0x338 <PWM2_servo_set_pulse_us+0x30>
+	{
+		tk = 16;                   // Lo sujetamos al límite inferior
+ 336:	80 e1       	ldi	r24, 0x10	; 16
+	}
+
+	if (tk > 31)                   // Si quedó por encima del rango útil
+ 338:	80 32       	cpi	r24, 0x20	; 32
+ 33a:	08 f0       	brcs	.+2      	; 0x33e <PWM2_servo_set_pulse_us+0x36>
+	{
+		tk = 31;                   // Lo sujetamos al límite superior
+ 33c:	8f e1       	ldi	r24, 0x1F	; 31
+	}
+
+	OCR2A = tk;                    // Carga ese valor al registro que controla el PWM del servo 2 por D11
+ 33e:	80 93 b3 00 	sts	0x00B3, r24	; 0x8000b3 <__TEXT_REGION_LENGTH__+0x7f80b3>
+ 342:	08 95       	ret
+
+00000344 <PWM2_servo_set_from_adc>:
+
+void PWM2_servo_set_from_adc(uint16_t adc_value) // Esta rutina convierte una lectura ADC en pulso para el servo 2
+{
+	uint16_t ps = 0;               // Aquí guardaremos el pulso final en microsegundos
+
+	ps = 1000 + ((uint32_t)adc_value * 1000UL) / 1023UL; // Mapea el rango 0-1023 del ADC a 1000-2000 us
+ 344:	9c 01       	movw	r18, r24
+ 346:	a8 ee       	ldi	r26, 0xE8	; 232
+ 348:	b3 e0       	ldi	r27, 0x03	; 3
+ 34a:	0e 94 51 02 	call	0x4a2	; 0x4a2 <__umulhisi3>
+ 34e:	2f ef       	ldi	r18, 0xFF	; 255
+ 350:	33 e0       	ldi	r19, 0x03	; 3
+ 352:	40 e0       	ldi	r20, 0x00	; 0
+ 354:	50 e0       	ldi	r21, 0x00	; 0
+ 356:	0e 94 2f 02 	call	0x45e	; 0x45e <__udivmodsi4>
+	PWM2_servo_set_pulse_us(ps);   // Manda ese pulso ya adaptado al servo 2
+ 35a:	c9 01       	movw	r24, r18
+ 35c:	88 51       	subi	r24, 0x18	; 24
+ 35e:	9c 4f       	sbci	r25, 0xFC	; 252
+ 360:	0e 94 84 01 	call	0x308	; 0x308 <PWM2_servo_set_pulse_us>
+ 364:	08 95       	ret
+
+00000366 <PWM3_led_init>:
+volatile uint8_t dc3 = 0;            // Guarda el duty cycle pedido en porcentaje
+volatile uint8_t pd3 = 0;            // Guarda el duty cycle convertido a pasos reales del PWM
+
+void PWM3_led_init(void)             // Esta rutina deja listo el LED y el Timer0
+{
+	DDRD |= (1 << DDD3);             // Configura D3 como salida para controlar el LED
+ 366:	8a b1       	in	r24, 0x0a	; 10
+ 368:	88 60       	ori	r24, 0x08	; 8
+ 36a:	8a b9       	out	0x0a, r24	; 10
+	PORTD &= ~(1 << PORTD3);         // Deja D3 en LOW para arrancar con el LED apagado
+ 36c:	8b b1       	in	r24, 0x0b	; 11
+ 36e:	87 7f       	andi	r24, 0xF7	; 247
+ 370:	8b b9       	out	0x0b, r24	; 11
+
+	TCCR0A = 0;                      // Limpia la configuración previa del Timer0 parte A
+ 372:	14 bc       	out	0x24, r1	; 36
+	TCCR0B = 0;                      // Limpia la configuración previa del Timer0 parte B
+ 374:	15 bc       	out	0x25, r1	; 37
+	TCNT0 = 0;                       // Reinicia el contador interno del Timer0 desde cero
+ 376:	16 bc       	out	0x26, r1	; 38
+
+	TCCR0A |= (1 << WGM01);          // Activa modo CTC para reiniciar el timer al llegar a OCR0A
+ 378:	84 b5       	in	r24, 0x24	; 36
+ 37a:	82 60       	ori	r24, 0x02	; 2
+ 37c:	84 bd       	out	0x24, r24	; 36
+	OCR0A = 79;                      // Baja el valor de comparación para que el PWM manual sea más rápido
+ 37e:	8f e4       	ldi	r24, 0x4F	; 79
+ 380:	87 bd       	out	0x27, r24	; 39
+
+	TCCR0B |= (1 << CS01);           // Coloca prescaler 8 para que el timer avance a buena velocidad
+ 382:	85 b5       	in	r24, 0x25	; 37
+ 384:	82 60       	ori	r24, 0x02	; 2
+ 386:	85 bd       	out	0x25, r24	; 37
+	TIMSK0 |= (1 << OCIE0A);         // Habilita la interrupción cuando Timer0 llegue a OCR0A
+ 388:	ee e6       	ldi	r30, 0x6E	; 110
+ 38a:	f0 e0       	ldi	r31, 0x00	; 0
+ 38c:	80 81       	ld	r24, Z
+ 38e:	82 60       	ori	r24, 0x02	; 2
+ 390:	80 83       	st	Z, r24
+
+	dc3 = 0;                         // Arranca el duty cycle en 0 %
+ 392:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <dc3>
+	pd3 = 0;                         // Arranca también en 0 pasos encendidos
+ 396:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 39a:	08 95       	ret
+
+0000039c <PWM3_led_set_duty>:
+}
+
+void PWM3_led_set_duty(uint8_t duty) // Esta rutina recibe el duty cycle en porcentaje
+{
+	if (duty > 100)                 // Si el valor supera el máximo permitido
+ 39c:	85 36       	cpi	r24, 0x65	; 101
+ 39e:	08 f0       	brcs	.+2      	; 0x3a2 <PWM3_led_set_duty+0x6>
+	{
+		duty = 100;                 // Lo limita a 100 %
+ 3a0:	84 e6       	ldi	r24, 0x64	; 100
+	}
+
+	dc3 = duty;                     // Guarda el porcentaje original
+ 3a2:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <dc3>
+	pd3 = ((uint16_t)duty * 64U) / 100U; // Convierte 0-100 % a un rango de 0-64 pasos PWM
+ 3a6:	90 e1       	ldi	r25, 0x10	; 16
+ 3a8:	89 9f       	mul	r24, r25
+ 3aa:	90 01       	movw	r18, r0
+ 3ac:	11 24       	eor	r1, r1
+ 3ae:	ab e7       	ldi	r26, 0x7B	; 123
+ 3b0:	b4 e1       	ldi	r27, 0x14	; 20
+ 3b2:	0e 94 51 02 	call	0x4a2	; 0x4a2 <__umulhisi3>
+ 3b6:	96 95       	lsr	r25
+ 3b8:	87 95       	ror	r24
+ 3ba:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 3be:	08 95       	ret
+
+000003c0 <PWM3_led_set_from_adc>:
+
+void PWM3_led_set_from_adc(uint16_t adc_value) // Convierte lectura ADC en brillo del LED
+{
+	uint8_t dt = 0;                 // Aquí se guardará el porcentaje final calculado
+
+	if (adc_value <= 25)            // Si el potenciómetro está casi en el mínimo
+ 3c0:	8a 31       	cpi	r24, 0x1A	; 26
+ 3c2:	91 05       	cpc	r25, r1
+ 3c4:	88 f0       	brcs	.+34     	; 0x3e8 <PWM3_led_set_from_adc+0x28>
+	{
+		dt = 0;                     // Fuerza apagado total para evitar brillo residual
+	}
+	else if (adc_value >= 995)      // Si el potenciómetro está casi al máximo
+ 3c6:	83 3e       	cpi	r24, 0xE3	; 227
+ 3c8:	23 e0       	ldi	r18, 0x03	; 3
+ 3ca:	92 07       	cpc	r25, r18
+ 3cc:	78 f4       	brcc	.+30     	; 0x3ec <PWM3_led_set_from_adc+0x2c>
+	{
+		dt = 100;                   // Fuerza encendido total
+	}
+	else                             // Si está dentro del rango normal
+	{
+		dt = ((uint32_t)adc_value * 100UL) / 1023UL; // Convierte 0-1023 a 0-100 %
+ 3ce:	9c 01       	movw	r18, r24
+ 3d0:	a4 e6       	ldi	r26, 0x64	; 100
+ 3d2:	b0 e0       	ldi	r27, 0x00	; 0
+ 3d4:	0e 94 51 02 	call	0x4a2	; 0x4a2 <__umulhisi3>
+ 3d8:	2f ef       	ldi	r18, 0xFF	; 255
+ 3da:	33 e0       	ldi	r19, 0x03	; 3
+ 3dc:	40 e0       	ldi	r20, 0x00	; 0
+ 3de:	50 e0       	ldi	r21, 0x00	; 0
+ 3e0:	0e 94 2f 02 	call	0x45e	; 0x45e <__udivmodsi4>
+ 3e4:	82 2f       	mov	r24, r18
+ 3e6:	03 c0       	rjmp	.+6      	; 0x3ee <PWM3_led_set_from_adc+0x2e>
+{
+	uint8_t dt = 0;                 // Aquí se guardará el porcentaje final calculado
+
+	if (adc_value <= 25)            // Si el potenciómetro está casi en el mínimo
+	{
+		dt = 0;                     // Fuerza apagado total para evitar brillo residual
+ 3e8:	80 e0       	ldi	r24, 0x00	; 0
+ 3ea:	01 c0       	rjmp	.+2      	; 0x3ee <PWM3_led_set_from_adc+0x2e>
+	}
+	else if (adc_value >= 995)      // Si el potenciómetro está casi al máximo
+	{
+		dt = 100;                   // Fuerza encendido total
+ 3ec:	84 e6       	ldi	r24, 0x64	; 100
+	else                             // Si está dentro del rango normal
+	{
+		dt = ((uint32_t)adc_value * 100UL) / 1023UL; // Convierte 0-1023 a 0-100 %
+	}
+
+	PWM3_led_set_duty(dt);          // Envía ese porcentaje al generador PWM
+ 3ee:	0e 94 ce 01 	call	0x39c	; 0x39c <PWM3_led_set_duty>
+ 3f2:	08 95       	ret
+
+000003f4 <__vector_14>:
+}
+
+ISR(TIMER0_COMPA_vect)              // Esta interrupción se ejecuta cada vez que Timer0 compara
+{
+ 3f4:	1f 92       	push	r1
+ 3f6:	0f 92       	push	r0
+ 3f8:	0f b6       	in	r0, 0x3f	; 63
+ 3fa:	0f 92       	push	r0
+ 3fc:	11 24       	eor	r1, r1
+ 3fe:	8f 93       	push	r24
+ 400:	9f 93       	push	r25
+	ct3++;                          // Avanza un paso dentro del periodo PWM actual
+ 402:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <ct3>
+ 406:	8f 5f       	subi	r24, 0xFF	; 255
+ 408:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <ct3>
+
+	if (ct3 >= 64)                 // Si ya completó los 64 pasos del periodo
+ 40c:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <ct3>
+ 410:	80 34       	cpi	r24, 0x40	; 64
+ 412:	28 f0       	brcs	.+10     	; 0x41e <__EEPROM_REGION_LENGTH__+0x1e>
+	{
+		ct3 = 0;                   // Reinicia el contador para comenzar otro ciclo
+ 414:	10 92 02 01 	sts	0x0102, r1	; 0x800102 <ct3>
+		PORTD |= (1 << PORTD3);    // Enciende el LED al inicio del nuevo ciclo
+ 418:	8b b1       	in	r24, 0x0b	; 11
+ 41a:	88 60       	ori	r24, 0x08	; 8
+ 41c:	8b b9       	out	0x0b, r24	; 11
+	}
+
+	if (pd3 == 0)                  // Si el duty cycle vale 0 %
+ 41e:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 422:	81 11       	cpse	r24, r1
+ 424:	04 c0       	rjmp	.+8      	; 0x42e <__EEPROM_REGION_LENGTH__+0x2e>
+	{
+		PORTD &= ~(1 << PORTD3);   // Mantiene el LED completamente apagado
+ 426:	8b b1       	in	r24, 0x0b	; 11
+ 428:	87 7f       	andi	r24, 0xF7	; 247
+ 42a:	8b b9       	out	0x0b, r24	; 11
+ 42c:	11 c0       	rjmp	.+34     	; 0x450 <__EEPROM_REGION_LENGTH__+0x50>
+	}
+	else if (pd3 >= 64)            // Si el duty cycle vale 100 %
+ 42e:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 432:	80 34       	cpi	r24, 0x40	; 64
+ 434:	20 f0       	brcs	.+8      	; 0x43e <__EEPROM_REGION_LENGTH__+0x3e>
+	{
+		PORTD |= (1 << PORTD3);    // Mantiene el LED completamente encendido
+ 436:	8b b1       	in	r24, 0x0b	; 11
+ 438:	88 60       	ori	r24, 0x08	; 8
+ 43a:	8b b9       	out	0x0b, r24	; 11
+ 43c:	09 c0       	rjmp	.+18     	; 0x450 <__EEPROM_REGION_LENGTH__+0x50>
+	}
+	else if (ct3 >= pd3)           // Cuando el contador llega al tiempo encendido pedido
+ 43e:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <ct3>
+ 442:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 446:	98 17       	cp	r25, r24
+ 448:	18 f0       	brcs	.+6      	; 0x450 <__EEPROM_REGION_LENGTH__+0x50>
+	{
+		PORTD &= ~(1 << PORTD3);   // Apaga el LED por el resto del ciclo
+ 44a:	8b b1       	in	r24, 0x0b	; 11
+ 44c:	87 7f       	andi	r24, 0xF7	; 247
+ 44e:	8b b9       	out	0x0b, r24	; 11
+	}
+ 450:	9f 91       	pop	r25
+ 452:	8f 91       	pop	r24
+ 454:	0f 90       	pop	r0
+ 456:	0f be       	out	0x3f, r0	; 63
+ 458:	0f 90       	pop	r0
+ 45a:	1f 90       	pop	r1
+ 45c:	18 95       	reti
+
+0000045e <__udivmodsi4>:
+ 45e:	a1 e2       	ldi	r26, 0x21	; 33
+ 460:	1a 2e       	mov	r1, r26
+ 462:	aa 1b       	sub	r26, r26
+ 464:	bb 1b       	sub	r27, r27
+ 466:	fd 01       	movw	r30, r26
+ 468:	0d c0       	rjmp	.+26     	; 0x484 <__udivmodsi4_ep>
+
+0000046a <__udivmodsi4_loop>:
+ 46a:	aa 1f       	adc	r26, r26
+ 46c:	bb 1f       	adc	r27, r27
+ 46e:	ee 1f       	adc	r30, r30
+ 470:	ff 1f       	adc	r31, r31
+ 472:	a2 17       	cp	r26, r18
+ 474:	b3 07       	cpc	r27, r19
+ 476:	e4 07       	cpc	r30, r20
+ 478:	f5 07       	cpc	r31, r21
+ 47a:	20 f0       	brcs	.+8      	; 0x484 <__udivmodsi4_ep>
+ 47c:	a2 1b       	sub	r26, r18
+ 47e:	b3 0b       	sbc	r27, r19
+ 480:	e4 0b       	sbc	r30, r20
+ 482:	f5 0b       	sbc	r31, r21
+
+00000484 <__udivmodsi4_ep>:
+ 484:	66 1f       	adc	r22, r22
+ 486:	77 1f       	adc	r23, r23
+ 488:	88 1f       	adc	r24, r24
+ 48a:	99 1f       	adc	r25, r25
+ 48c:	1a 94       	dec	r1
+ 48e:	69 f7       	brne	.-38     	; 0x46a <__udivmodsi4_loop>
+ 490:	60 95       	com	r22
+ 492:	70 95       	com	r23
+ 494:	80 95       	com	r24
+ 496:	90 95       	com	r25
+ 498:	9b 01       	movw	r18, r22
+ 49a:	ac 01       	movw	r20, r24
+ 49c:	bd 01       	movw	r22, r26
+ 49e:	cf 01       	movw	r24, r30
+ 4a0:	08 95       	ret
+
+000004a2 <__umulhisi3>:
+ 4a2:	a2 9f       	mul	r26, r18
+ 4a4:	b0 01       	movw	r22, r0
+ 4a6:	b3 9f       	mul	r27, r19
+ 4a8:	c0 01       	movw	r24, r0
+ 4aa:	a3 9f       	mul	r26, r19
+ 4ac:	70 0d       	add	r23, r0
+ 4ae:	81 1d       	adc	r24, r1
+ 4b0:	11 24       	eor	r1, r1
+ 4b2:	91 1d       	adc	r25, r1
+ 4b4:	b2 9f       	mul	r27, r18
+ 4b6:	70 0d       	add	r23, r0
+ 4b8:	81 1d       	adc	r24, r1
+ 4ba:	11 24       	eor	r1, r1
+ 4bc:	91 1d       	adc	r25, r1
+ 4be:	08 95       	ret
+
+000004c0 <_exit>:
+ 4c0:	f8 94       	cli
+
+000004c2 <__stop_program>:
+ 4c2:	ff cf       	rjmp	.-2      	; 0x4c2 <__stop_program>
