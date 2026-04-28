@@ -520,16 +520,16 @@ END GROUP
  .debug_frame   0x000000c4       0x44 pwm2_servo.o
  .debug_frame   0x00000108       0x68 pwm3_led.o
 
-.debug_str      0x00000000      0x4bf
+.debug_str      0x00000000      0x503
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x22b main.o
-                                0x25f (size before relaxing)
- .debug_str     0x00000433       0x34 pwm1_servo.o
+ .debug_str     0x00000208      0x231 main.o
+                                0x265 (size before relaxing)
+ .debug_str     0x00000439       0x72 pwm1_servo.o
                                 0x1c6 (size before relaxing)
- .debug_str     0x00000467       0x2a pwm2_servo.o
+ .debug_str     0x000004ab       0x2a pwm2_servo.o
                                 0x1c6 (size before relaxing)
- .debug_str     0x00000491       0x2e pwm3_led.o
+ .debug_str     0x000004d5       0x2e pwm3_led.o
                                 0x1cb (size before relaxing)
 
 .debug_loc      0x00000000      0x555
